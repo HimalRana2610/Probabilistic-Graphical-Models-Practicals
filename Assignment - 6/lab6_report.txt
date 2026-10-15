@@ -1,0 +1,174 @@
+
+========================================================================
+PS1 (c) ancestors on case_p6_sample.in
+========================================================================
+ancestors_of({3}) = [0, 1, 2, 3]
+
+========================================================================
+PS2 (e) pairs vs nodes in the visited set
+========================================================================
+edges: 1->0 1->4 4->3 3->2 2->0 5->4   query x=0 y=5 Z={}
+visited over pairs : NO (correct)
+visited over nodes : YES (wrong)
+answers changed by the node-level bug on the four case files: 0
+
+========================================================================
+PS2 (g) nodes visited in both directions, case_p6_student.in
+========================================================================
+q1  x=0 y=1 Z=[]         both directions: 
+q2  x=1 y=2 Z=[]         both directions: 
+q3  x=1 y=3 Z=[]         both directions: 
+q4  x=0 y=1 Z=[6]        both directions: 2(fail), 3(higher), 4(study)
+q5  x=0 y=1 Z=[7]        both directions: 2(fail), 3(higher), 4(study), 5(absent), 6(g1)
+q6  x=0 y=1 Z=[4]        both directions: 2(fail), 3(higher)
+q7  x=0 y=7 Z=[5, 6]     both directions: 2(fail), 3(higher), 4(study)
+q8  x=2 y=7 Z=[5, 6]     both directions: 2(fail), 3(higher), 4(study)
+q9  x=0 y=5 Z=[1, 2]     both directions: 
+q10 x=4 y=7 Z=[6]        both directions: 2(fail), 3(higher), 4(study)
+q11 x=3 y=5 Z=[0, 2]     both directions: 
+q12 x=1 y=7 Z=[5, 6]     both directions: 2(fail), 3(higher), 4(study)
+
+========================================================================
+PS3 (i)/(j) cross-validation against the Lab 4 program
+========================================================================
+Lab 4 program: D:\SVNIT\Semester - 7\Probabilistic Graphical Models\Practicals\Assignment - 4\lab4.py
+case_p6_sample.in    12 queries, disagreements: none
+case_p6_student.in   12 queries, disagreements: none
+case_p6_main.in      40 queries, disagreements: none
+case_p6_wide.in       7 queries, disagreements: none
+
+========================================================================
+PS3 (k) answers for case_p6_main.in
+========================================================================
+q1  10 11 | 0              -> NO
+q2  11 12 | 8 10 13        -> NO
+q3   8  9 |                -> YES
+q4   8  6 | 4 9            -> YES
+q5  14  0 | 7 11 12        -> NO
+q6  13  4 | 0 8            -> NO
+q7   5  9 | 0 11 13        -> NO
+q8   8 14 | 2              -> NO
+q9  14 13 | 12             -> NO
+q10  0 12 | 2              -> YES
+q11  2 10 | 14             -> NO
+q12 13  7 |                -> NO
+q13  5  0 | 8 10 11        -> NO
+q14 12  9 | 3 14           -> NO
+q15  0 10 | 8              -> NO
+q16  9  2 | 3              -> YES
+q17  4  6 | 2 13           -> NO
+q18 12 11 | 2 13           -> NO
+q19  0  7 | 4 14           -> NO
+q20  2 13 |                -> YES
+q21 12 10 | 0 11 14        -> NO
+q22  4 14 | 13             -> NO
+q23 10  8 | 2 7 11         -> NO
+q24 11 12 | 1 9 13         -> NO
+q25  0 10 | 6 12           -> NO
+q26 10  3 | 8 12 13        -> NO
+q27  0  7 | 2              -> YES
+q28  3  5 | 8              -> YES
+q29 11  5 | 0 4            -> NO
+q30  3  6 | 14             -> NO
+q31  7  9 |                -> YES
+q32  1  2 | 4 5 14         -> YES
+q33  2  0 |                -> YES
+q34 14 13 | 7 9            -> NO
+q35  8  0 | 5 9            -> NO
+q36  6 10 | 7 8            -> YES
+q37 13  4 | 0 1            -> NO
+q38 14  8 | 2              -> NO
+q39  7 10 |                -> NO
+q40  8 14 |                -> NO
+
+========================================================================
+PS4 (m)/(n) pair counts and timing
+========================================================================
+file                    n    m   2n     q | max distinct   max popped  time (ms)
+case_p6_sample.in       5    4   10    12 |            7            7      0.030
+case_p6_student.in      8   14   16    12 |           13           13      0.063
+case_p6_main.in        15   22   30    40 |           21           21      0.250
+case_p6_wide.in        91  120  182     7 |           92           92      0.148
+
+case_p6_wide.in, per query:
+   0 90 |        -> NO   distinct pairs  91  popped  91  0.023 ms
+   0 90 | 45     -> YES  distinct pairs  90  popped  90  0.040 ms
+   0 90 | 21 45  -> YES  distinct pairs  42  popped  42  0.020 ms
+   1  2 |        -> NO   distinct pairs  92  popped  92  0.023 ms
+   1  2 | 3      -> NO   distinct pairs   6  popped   6  0.003 ms
+   0  1 |        -> NO   distinct pairs  91  popped  91  0.023 ms
+   0  3 | 1 2    -> YES  distinct pairs   3  popped   3  0.002 ms
+
+========================================================================
+PS4 (o) trail-based programs on case_p6_wide.in
+========================================================================
+literal trail enumeration  0 90 |        : NO after 1 trails, 0.00 s
+literal trail enumeration  0 90 | 45     : ABANDONED after 1695744 trails, 10.02 s
+literal trail enumeration  0 90 | 21 45  : ABANDONED after 2420736 trails, 10.02 s
+Lab 4 program (has_active_trail), all 7 queries: NO YES YES NO NO NO YES  0.158 ms
+
+========================================================================
+PS5 (r)/(s) blanket sizes, case_p6_main.in
+========================================================================
+node  0  |pa|=0 |ch|=2  size  5  [5, 7, 8, 9, 10]
+node  1  |pa|=0 |ch|=2  size  4  [2, 4, 6, 12]
+node  2  |pa|=0 |ch|=3  size  8  [1, 3, 4, 5, 6, 10, 11, 14]
+node  3  |pa|=0 |ch|=3  size  5  [2, 4, 5, 7, 11]
+node  4  |pa|=1 |ch|=3  size  8  [1, 2, 3, 6, 9, 10, 12, 13]
+node  5  |pa|=0 |ch|=2  size  8  [0, 2, 3, 7, 8, 9, 10, 11]
+node  6  |pa|=3 |ch|=1  size  4  [1, 2, 4, 12]
+node  7  |pa|=1 |ch|=1  size  6  [0, 3, 5, 8, 9, 10]
+node  8  |pa|=1 |ch|=1  size  5  [0, 5, 7, 9, 10]
+node  9  |pa|=0 |ch|=2  size  7  [0, 4, 5, 7, 8, 10, 13]
+node 10  |pa|=5 |ch|=2  size  9  [0, 2, 4, 5, 7, 8, 9, 13, 14]
+node 11  |pa|=3 |ch|=0  size  3  [2, 3, 5]
+node 12  |pa|=3 |ch|=0  size  3  [1, 4, 6]
+node 13  |pa|=3 |ch|=0  size  3  [4, 9, 10]
+node 14  |pa|=2 |ch|=0  size  2  [2, 10]
+largest : 9 [10]
+smallest: 2 [14]
+childless nodes, size == number of parents: True [11, 12, 13, 14]
+
+========================================================================
+PS6 (t)/(u)/(v) the blanket separates
+========================================================================
+full blanket        case_p6_sample.in    failures: 0 []
+full blanket        case_p6_student.in   failures: 0 []
+full blanket        case_p6_main.in      failures: 0 []
+full blanket        case_p6_wide.in      failures: 0 []
+full blanket        total failures: 0
+
+co-parents removed  case_p6_sample.in    failures: 3 [(0, 2), (0, 4), (2, 0)]
+co-parents removed  case_p6_student.in   failures: 20 [(0, 1), (0, 5), (0, 6), (0, 7), (1, 0), (1, 2), (1, 3), (2, 1), (2, 4), (3, 1), (3, 5), (3, 7)] ...
+co-parents removed  case_p6_main.in      failures: 86 [(0, 3), (0, 4), (0, 5), (0, 6), (0, 7), (0, 9), (0, 11), (0, 12), (0, 13), (1, 2), (1, 3), (1, 4)] ...
+co-parents removed  case_p6_wide.in      failures: 60 [(1, 2), (2, 1), (4, 5), (5, 4), (7, 8), (8, 7), (10, 11), (11, 10), (13, 14), (14, 13), (16, 17), (17, 16)] ...
+co-parents removed  total failures: 169
+
+sample query 2: '0 2 1' -> Z is the co-parent-free blanket of 0, answer NO
+sample query 5: '0 4 1' -> Z is the co-parent-free blanket of 0, answer NO
+
+========================================================================
+PS7 (w) blankets of the Practical 5 network
+========================================================================
+medu   : goout, fail, higher, study
+goout  : medu, fail, higher, study, absent, g1
+fail   : medu, goout, higher, study, absent, g1
+higher : medu, goout, fail, study, g1
+study  : medu, goout, fail, higher, g1
+absent : goout, fail, g1, grade
+g1     : goout, fail, higher, study, absent, grade
+grade  : absent, g1
+
+========================================================================
+PS7 (x)/(y) numerical check with the Practical 5 CPTs
+========================================================================
+alpha = 0  (raw MLE, as in Practical 5)
+  node    blanket (all = 1)                     extra     P(v=1|mb)        P(v=1|mb,extra)  |diff|
+  g1      goout,fail,higher,study,absent,grade  medu=1    0.00000000000000 0.00000000000000 0.0e+00  [P(mb)=3.53e-04]
+  study   medu,goout,fail,higher,g1             absent=1  0.00000000000000 0.00000000000000 0.0e+00  [P(mb)=2.02e-03]
+  absent  goout,fail,g1,grade                   higher=1  0.31874159163821 0.31874159163821 5.6e-17  [P(mb)=5.56e-03]
+alpha = 1  (Laplace-smoothed, Practical 5 T7)
+  node    blanket (all = 1)                     extra     P(v=1|mb)        P(v=1|mb,extra)  |diff|
+  g1      goout,fail,higher,study,absent,grade  medu=1    0.59574468085106 0.59574468085106 1.1e-16  [P(mb)=7.25e-04]
+  study   medu,goout,fail,higher,g1             absent=1  0.17322834645669 0.17322834645669 5.6e-17  [P(mb)=2.74e-03]
+  absent  goout,fail,g1,grade                   higher=1  0.32304038004751 0.32304038004751 0.0e+00  [P(mb)=9.06e-03]
